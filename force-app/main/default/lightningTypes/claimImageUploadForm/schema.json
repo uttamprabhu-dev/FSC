@@ -1,0 +1,5 @@
+{
+    "title": "Claim Image Upload Form",
+    "description": "Claim Image Upload Form",
+    "lightning:type": "@apexClassType/c__UploadClaimImageAction$ImageUploadInput"
+}

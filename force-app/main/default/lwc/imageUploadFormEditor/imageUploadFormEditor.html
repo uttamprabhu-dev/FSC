@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-card slds-p-around_medium">
+        <h2 class="slds-text-heading_small slds-m-bottom_small">📸 Upload Claim Image</h2>
+
+        <div class="slds-box slds-m-bottom_small slds-p-around_small slds-theme_shade">
+            <p class="slds-text-body_small">
+                Upload supporting images for this warranty claim (photos of damage, parts, labels, etc.)
+            </p>
+        </div>
+
+        <div class="slds-m-bottom_small">
+            <lightning-file-upload label="Attach receipt" name="fileUploader" accept={acceptedFormats}
+                record-id={myRecordId} onuploadfinished={handleUploadFinished} multiple>
+            </lightning-file-upload>
+        </div>
+
+        <template if:true={isFileSelected}>
+            <div class="slds-box slds-theme_success slds-p-around_x-small slds-m-bottom_small"
+                style="display: flex; align-items: center;">
+                <lightning-icon icon-name="utility:check" size="x-small" class="slds-m-right_x-small"
+                    variant="inverse"></lightning-icon>
+                <span style="color: white;">
+                    <strong>Selected:</strong> {selectedFileName}
+                </span>
+            </div>
+        </template>
+
+        <lightning-textarea label="Description (optional)" value={formData.description}
+            onchange={handleDescriptionChange} placeholder="Describe what this image shows..." class="slds-m-top_small">
+        </lightning-textarea>
+    </div>
+</template>
