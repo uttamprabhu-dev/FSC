@@ -42,14 +42,21 @@ global class OTPHelper {
 
     global class OTPGeneratorResponse {
 
-        @InvocableVariable(label='+OTP Verification Result'
+        @InvocableVariable(label='OTP Verification Result'
             description='The result of OTP verification: "OTP verified successfully", "OTP verification failed", or "Session not found".'
             required=true
         )
         public String otpGenerationResult;
 
-        public OTPGeneratorResponse(String otpGenerationResult) {
+        @InvocableVariable(label='OTP value'
+            description='The value of OTP generated.'
+            required=true
+        )
+        public String otpValue;
+
+        public OTPGeneratorResponse(String otpGenerationResult, String otpValue ) {
             this.otpGenerationResult = otpGenerationResult;
+            this.otpValue = otpValue;
         }
     }
 
@@ -59,7 +66,7 @@ global class OTPHelper {
     )
     global static List<OTPGeneratorResponse> sendOTP(List<OTPGeneratorRequest> inputs) {
         try {
-            Map<String, String> map_sessionToNumber = new Map<String, String>(); // ✅ FIXED
+            Map<String, String> map_sessionToNumber = new Map<String, String>();
             Map<String, String> map_numberToOTP = new Map<String, String>();
             Map<String, String> map_emailToNumber = new Map<String, String>();
 
@@ -75,7 +82,7 @@ global class OTPHelper {
             ];
 
             if (list_contacts.isEmpty()) {
-                OTPGeneratorResponse otpGenerationResult = new OTPGeneratorResponse('OTP was not sent successfully'); 
+                OTPGeneratorResponse otpGenerationResult = new OTPGeneratorResponse('OTP was not sent successfully', 'XXXXXX'); 
                 return new List<OTPGeneratorResponse>{ otpGenerationResult };
             }
 
@@ -111,13 +118,13 @@ global class OTPHelper {
             update list_messagingSessions;
             sendOTPEmails(list_emailRequest);
 
-            OTPGeneratorResponse otpGenerationResult = new OTPGeneratorResponse('OTP sent successfully'); 
+            OTPGeneratorResponse otpGenerationResult = new OTPGeneratorResponse('OTP sent successfully', list_emailRequest[0].otp);
             return new List<OTPGeneratorResponse>{ otpGenerationResult };
 
         } catch (Exception e) {
             System.debug('Error: ' + e.getMessage());
         }
-        OTPGeneratorResponse otpGenerationResult = new OTPGeneratorResponse('OTP was not sent successfully'); 
+        OTPGeneratorResponse otpGenerationResult = new OTPGeneratorResponse('OTP was not sent successfully', 'XXXXXX'); 
         return new List<OTPGeneratorResponse>{ otpGenerationResult };
     }
 

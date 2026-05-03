@@ -55,7 +55,7 @@ global class FetchCustomerTransactions {
                 FROM FinancialAccountParty
                 WHERE (AccountId IN :set_personAccountIds OR ContactId IN :contacts)
                     AND Role = 'Owner'
-            ) AND Type = 'Credit Card' AND Status = 'Active'
+            ) AND Status = 'Active'
         ];
 
         List<FinancialAccountTransaction> list_financialAccountTransactions = [
