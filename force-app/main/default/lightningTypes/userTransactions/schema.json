@@ -1,0 +1,5 @@
+{
+    "title": "Transactions Component",
+    "description": "Transactions Component",
+    "lightning:type": "@apexClassType/c__FetchCustomerTransactions$FinAccTrnsWrapper"
+}

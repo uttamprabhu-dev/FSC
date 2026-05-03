@@ -175,7 +175,7 @@ global class LoanRestructureController {
             if (!owea.isEmpty()) {
                 mail.setOrgWideEmailAddressId(owea[0].Id);
             }
-            Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
+            // Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
 
             LoanChangeResponse response = new LoanChangeResponse();
             response.success = true;

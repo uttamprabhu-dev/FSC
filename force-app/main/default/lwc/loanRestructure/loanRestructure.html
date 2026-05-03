@@ -8,11 +8,11 @@
                         <div key={loan.id} class={loan.isSelected} onclick={handleSelectLoan} data-index={index}
                             onmouseenter={handleTileHover} onmouseleave={handleTileHoverOut}>
                             <p class="loan-tile-title">{loan.loanAccount}</p>
-                            <p class="loan-tile-detail"><strong>Loan Amount:</strong> ${loan.totalLoanAmount}</p>
+                            <p class="loan-tile-detail"><strong>Loan Amount:</strong> INR {loan.totalLoanAmount}</p>
                             <p class="loan-tile-detail"><strong>Term:</strong> {loan.loanTerm} months</p>
-                            <p class="loan-tile-detail"><strong>Due Amount:</strong> ${loan.currentDueAmount}</p>
+                            <p class="loan-tile-detail"><strong>Due Amount:</strong> INR {loan.currentDueAmount}</p>
                             <p class="loan-tile-detail"><strong>Interest Rate:</strong> {loan.interestRate}%</p>
-                            <p class="loan-tile-detail"><strong>Interest Amount:</strong> ${loan.interestAmount}</p>
+                            <p class="loan-tile-detail"><strong>Interest Amount:</strong> INR {loan.interestAmount}</p>
                         </div>
                     </template>
                 </div>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Total Loan Amount</span>
-                            <span class="detail-value">${chosenLoanOption.totalLoanAmount}</span>
+                            <span class="detail-value">INR {chosenLoanOption.totalLoanAmount}</span>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Loan Term</span>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Current Due Amount</span>
-                            <span class="detail-value">${chosenLoanOption.currentDueAmount}</span>
+                            <span class="detail-value">INR {chosenLoanOption.currentDueAmount}</span>
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Interest Rate</span>
@@ -55,7 +55,7 @@
                         </div>
                         <div class="detail-row">
                             <span class="detail-label">Interest Amount</span>
-                            <span class="detail-value">${chosenLoanOption.interestAmount}</span>
+                            <span class="detail-value">INR {chosenLoanOption.interestAmount}</span>
                         </div>
                     </div>
 
@@ -81,15 +81,15 @@
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">New Monthly EMI</span>
-                                <span class="detail-value">${updatedTenureLoanDetails.monthlyEmi}</span>
+                                <span class="detail-value">INR {updatedTenureLoanDetails.monthlyEmi}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">Total Interest Payable</span>
-                                <span class="detail-value">${updatedTenureLoanDetails.totalInterest}</span>
+                                <span class="detail-value">INR {updatedTenureLoanDetails.totalInterest}</span>
                             </div>
                             <div class="detail-row">
                                 <span class="detail-label">Total Amount Payable</span>
-                                <span class="detail-value">${updatedTenureLoanDetails.totalPayable}</span>
+                                <span class="detail-value">INR {updatedTenureLoanDetails.totalPayable}</span>
                             </div>
                         </div>
 

@@ -1,0 +1,19 @@
+<template>
+    <div class="loan-container">
+        <template if:true={step1}>
+            <div class="step-container">
+                <h1 class="step-header">My Balances</h1>
+                <div class="loan-grid">
+                    <template for:each={transactions} for:item="loan" for:index="index">
+                        <div key={loan.id} class={loan.isSelected} data-index={index}
+                            onmouseenter={handleTileHover} onmouseleave={handleTileHoverOut}>
+                            <p class="loan-tile-title">{loan.name}</p>
+                            <p class="loan-tile-detail"><strong>Amount:</strong> INR {loan.amount}</p>
+                            <p class="loan-tile-detail"><strong>Type:</strong> {loan.type}</p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

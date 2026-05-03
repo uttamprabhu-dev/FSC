@@ -1,0 +1,55 @@
+<template>
+    <div class="loan-container">
+        <template if:true={step1}>
+            <div class="step-container">
+                <h1 class="step-header">My Transactions</h1>
+                <div class="loan-grid">
+                    <template for:each={transactions} for:item="loan" for:index="index">
+                        <div key={loan.id} class={loan.isSelected} onclick={handleSelectLoan} data-index={index}
+                            onmouseenter={handleTileHover} onmouseleave={handleTileHoverOut}>
+                            <p class="loan-tile-title">{loan.name}</p>
+                            <p class="loan-tile-detail"><strong>Amount:</strong> INR {loan.amount}</p>
+                            <p class="loan-tile-detail"><strong>Date:</strong> {loan.trnsDate}</p>
+                            <p class="loan-tile-detail"><strong>Type:</strong> {loan.type}</p>
+                        </div>
+                    </template>
+                </div>
+                <template lwc:if={chosenLoanOption}>
+                    <button type="button" onclick={handleNext} class="select-loan-btn">Next</button>
+                </template>
+            </div>
+        </template>
+        <template if:true={step2}>
+            <template if:true={chosenLoanOption}>
+                <div class="step-container">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 10px;">
+                        <lightning-button-icon icon-class="" icon-name="utility:back" alternative-text="Previous"
+                            class="" name="Go back" size="large" title="Go back" tooltip="Go back" type="button"
+                            value="" variant="bare" onclick={handleBack}></lightning-button-icon>
+                        <h1 class="step-header">Transactions Details</h1>
+                    </div>
+
+                    <div class="loan-details">
+                        <div class="form-section-title">Selected Loan Details</div>
+                        <div class="detail-row">
+                            <span class="detail-label">Transaction Name</span>
+                            <span class="detail-value">{chosenLoanOption.name}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Amount</span>
+                            <span class="detail-value">INR {chosenLoanOption.amount}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Transaction Date</span>
+                            <span class="detail-value">{chosenLoanOption.trnsDate}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Transaction Type</span>
+                            <span class="detail-value">{chosenLoanOption.type}</span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

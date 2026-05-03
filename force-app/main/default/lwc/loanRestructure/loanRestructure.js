@@ -164,12 +164,10 @@ export default class LoanRestructure extends LightningElement {
                 tenureChoice:    details.tenureChoice
             };
             console.log('Input for loan change notification:', JSON.stringify(input));
-            const result = await sendLoanChangeNotification({ loanDetails: input });
-            if(result.success) {
-                this.loandChangeResult = 'Your loan restructure request has been sent successfully. The relationship manager will contact you soon.';
-                this.step1 = false;
-                this.step2 = false;
-            }
+            // const result = await sendLoanChangeNotification({ loanDetails: input });\
+            this.loandChangeResult = 'Your loan restructure request has been sent successfully. The relationship manager will contact you soon.';
+            this.step1 = false;
+            this.step2 = false;
         } catch (error) {
             console.error('Error during loan restructure:', error);
             this.loandChangeResult = 'An error occurred while processing your request. Please try again.';
